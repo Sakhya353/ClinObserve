@@ -1,8 +1,0 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ClinObserve API console</title>
-<style>body{font:14px system-ui;margin:0;padding:20px;background:#e9f2ec;color:#0a2415}input,select,button{padding:8px 10px;border:1px solid #cbe0d2;border-radius:8px;font:inherit}button{background:#14532d;color:#fff;cursor:pointer}pre{background:#fff;border:1px solid #cbe0d2;border-radius:10px;padding:14px;max-height:60vh;overflow:auto}.r{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}</style></head><body>
-<h2>ClinObserve API console</h2><p>Synthetic Research Prototype — Not an Official AIIMS Delhi System. Demo login: <code>admin@clinobserve.demo</code> / <code>Demo@1234</code></p>
-<div class="r"><input id="e" value="admin@clinobserve.demo"><input id="p" type="password" value="Demo@1234"><button onclick="login()">Login</button></div>
-<div class="r"><input id="u" value="/api/dashboard" style="flex:1;min-width:240px"><button onclick="call()">GET</button></div><pre id="o">Login first, then call an endpoint (e.g. /api/patients?q=Ananya, /api/analytics/waiting).</pre>
-<script>let T='';const o=document.getElementById('o'),j=async r=>o.textContent=JSON.stringify(await r.json(),null,2);
-const login=async()=>{const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e.value,password:p.value})}),d=await r.json();T=d.token||'';o.textContent=JSON.stringify(d,null,2)};
-const call=async()=>j(await fetch(u.value,{headers:{Authorization:'Bearer '+T}}));</script></body></html>
